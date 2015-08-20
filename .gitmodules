@@ -1,0 +1,12 @@
+[submodule "dpaviser-qa-tool"]
+	path = dpaviser-qa-tool
+	url = git@github.com:statsbiblioteket/dpaviser-qa-tool.git
+	branch = master
+[submodule "dpaviser-structure-checker"]
+	path = dpaviser-structure-checker
+	url = git@github.com:statsbiblioteket/dpaviser-structure-checker.git
+	branch = master
+[submodule "dpaviser-metadata-checker"]
+	path = dpaviser-metadata-checker
+	url = git@github.com:statsbiblioteket/dpaviser-metadata-checker.git
+	branch = master
