@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dk.statsbiblioteket.dpaviser</groupId>
-    <artifactId>dpaviser-parent</artifactId>
+    <artifactId>dpaviser-aggregator</artifactId>
     <version>master-SNAPSHOT</version>
     <packaging>pom</packaging>
 
