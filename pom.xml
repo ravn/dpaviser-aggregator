@@ -4,7 +4,7 @@
 
     <groupId>dk.statsbiblioteket.dpaviser</groupId>
     <artifactId>dpaviser-aggregator</artifactId>
-    <version>master-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <scm>
