@@ -10,3 +10,7 @@
 	path = dpaviser-metadata-checker
 	url = git@github.com:statsbiblioteket/dpaviser-metadata-checker.git
 	branch = master
+[submodule "jhove"]
+	path = jhove
+	url = git@github.com:openpreserve/jhove.git
+	branch = integration
