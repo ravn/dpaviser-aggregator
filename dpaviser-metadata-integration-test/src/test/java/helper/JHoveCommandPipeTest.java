@@ -24,8 +24,14 @@ public class JHoveCommandPipeTest {
                 InputStream expected = getClass().getResourceAsStream(BMA20150831_X11_0002_XML);
         ) {
             List<String> actualList = StringListForInputStream(actual);
+            actualList.remove(5); // <lastModified>2015-09-03T17:09:01+02:00</lastModified>
+            actualList.remove(3); // <repInfo uri="/tmp/JHoveCommandPipe6233676701247156809.tmp">
+            actualList.remove(2); // <date>2015-09-03T17:09:01+02:00</date>
             List<String> expectedList = StringListForInputStream(expected);
-            assertEquals(String.join("\n", actualList), String.join("\n", expectedList), "JHove output does not match cached version");
+            expectedList.remove(5);
+            expectedList.remove(3);
+            expectedList.remove(2);
+            assertEquals(String.join("\n", expectedList), String.join("\n", actualList), "JHove output does not match cached version");
         }
     }
 
