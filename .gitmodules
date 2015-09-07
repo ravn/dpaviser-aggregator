@@ -10,3 +10,6 @@
 	path = dpaviser-metadata-checker
 	url = https://github.com/statsbiblioteket/dpaviser-metadata-checker.git
 	branch = master
+[submodule "sbforge-parent"]
+	path = sbforge-parent
+	url = https://github.com/statsbiblioteket/sbforge-parent.git

@@ -7,6 +7,7 @@
         <groupId>dk.statsbiblioteket.newspaper</groupId>
         <artifactId>newspaper-parent</artifactId>
         <version>1.5</version>
+        <relativePath>newspaper-parent</relativePath>
     </parent>
     <groupId>dk.statsbiblioteket.dpaviser</groupId>
     <artifactId>dpaviser-aggregator</artifactId>
@@ -38,6 +39,8 @@
         <module>dpaviser-structure-checker</module>
         <module>dpaviser-qa-tool</module>
         <module>dpaviser-metadata-integration-test</module>
+        <module>newspaper-parent</module>
+        <module>sbforge-parent</module>
     </modules>
 
 </project>
