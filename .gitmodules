@@ -16,3 +16,7 @@
 [submodule "newspaper-parent"]
 	path = newspaper-parent
 	url = https://github.com/statsbiblioteket/newspaper-parent.git
+[submodule "jhove"]
+	path = jhove
+	url = https://github.com/statsbiblioteket/jhove.git
+	branch = integration
