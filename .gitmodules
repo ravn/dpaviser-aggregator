@@ -13,3 +13,6 @@
 [submodule "sbforge-parent"]
 	path = sbforge-parent
 	url = https://github.com/statsbiblioteket/sbforge-parent.git
+[submodule "newspaper-parent"]
+	path = newspaper-parent
+	url = https://github.com/statsbiblioteket/newspaper-parent.git
