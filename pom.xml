@@ -35,6 +35,7 @@
     </repositories>
 
     <modules>
+        <module>jhove</module>
         <module>dpaviser-metadata-checker</module>
         <module>dpaviser-structure-checker</module>
         <module>dpaviser-qa-tool</module>
