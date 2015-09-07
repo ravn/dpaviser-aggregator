@@ -15,9 +15,9 @@
     <packaging>pom</packaging>
 
     <scm>
-        <url>https://github.com/statsbiblioteket/dpaviser-metadata-checker</url>
-        <connection>scm:git:https://github.com/statsbiblioteket/dpaviser-metadata-checker.git</connection>
-        <developerConnection>scm:git:git@github.com:statsbiblioteket/dpaviser-metadata-checker.git</developerConnection>
+        <url>https://github.com/statsbiblioteket/dpaviser-aggregator</url>
+        <connection>scm:git:https://github.com/statsbiblioteket/dpaviser-aggregator.git</connection>
+        <developerConnection>scm:git:git@github.com:statsbiblioteket/dpaviser-aggregator.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
