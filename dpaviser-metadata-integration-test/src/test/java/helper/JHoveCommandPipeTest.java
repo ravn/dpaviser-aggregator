@@ -16,7 +16,7 @@ import static org.testng.Assert.assertEquals;
 
 public class JHoveCommandPipeTest {
 
-    @Test
+    @Test(groups = "standAloneTest")
     public void testIfJHoveOutputIsTheSameAsInTheTestdata() throws Exception {
         try (
 
