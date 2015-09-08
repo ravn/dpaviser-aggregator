@@ -4,8 +4,5 @@ jdk:
 
 sudo: false
 
-before_install:
-- apt-get install sharutils
-
 after_failure:
 - tar cjf - $(find . -type d -name 'failsafe-reports' -o -name 'surefire-reports') | perl -MMIME::Base64=encode_base64 -e 'print encode_base64 join"",<>'
