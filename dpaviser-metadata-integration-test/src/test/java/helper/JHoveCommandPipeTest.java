@@ -8,7 +8,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static dk.statsbiblioteket.dpaviser.metadatachecker.testdata.Resources.BMA20150831_X11_0002_PDF;
 import static dk.statsbiblioteket.dpaviser.metadatachecker.testdata.Resources.BMA20150831_X11_0002_XML;
@@ -33,9 +35,12 @@ public class JHoveCommandPipeTest {
         if (jhoveBinDir.exists() == false) {
             throw new FileNotFoundException(canonicalPath);
         }
-        System.out.println(canonicalPath);
+        System.out.println(canonicalPath); // FIXME: Remove when ready.
 
-        JHoveCommandPipe commandPipe = new JHoveCommandPipe(canonicalPath);
+        Map<String, String> environmentVariables = new HashMap<>();
+        environmentVariables.put("TZ", "UTC");  // JHove output localized dates.
+
+        JHoveCommandPipe commandPipe = new JHoveCommandPipe(canonicalPath, environmentVariables);
         try (
 
                 InputStream actual = commandPipe.apply(getClass().getResourceAsStream(BMA20150831_X11_0002_PDF));
