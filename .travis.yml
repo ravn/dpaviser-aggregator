@@ -3,3 +3,6 @@ jdk:
 - oraclejdk8
 
 sudo: false
+
+after_failure:
+- tar cjf - $(find . -type d -name 'failsafe-reports' -o -name 'surefire-reports') | uuencode reports.tar.bz2

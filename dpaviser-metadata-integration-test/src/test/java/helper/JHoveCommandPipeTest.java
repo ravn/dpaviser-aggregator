@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
@@ -18,17 +19,23 @@ import static org.testng.Assert.assertEquals;
 public class JHoveCommandPipeTest {
     @Test
     public void testIfJHoveOutputIsTheSameAsInTheTestdata() throws Exception {
-        // This code expects to be run in a maven build.  Using this knowledge, ask JVM for where _this_ class is
+        // This code expects to be run in a maven build (where property "user.dir" is undefined).
+        // Using this knowledge, ask JVM for where _this_ class is
         // located in the filesystem and then navigate to the jhove build "next to" this project with an app-assembler
         // structure in jhove-apps giving "jhove-apps/target/appassembler/bin/jhove" to
         // call.
 
         String targetClassesPath = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
         File thisMavenModuleDir = new File(targetClassesPath, "../..");
-        File jhoveBinFile = new File(thisMavenModuleDir, "../jhove/jhove-apps/target/appassembler/bin/");
-        System.out.println(jhoveBinFile.getCanonicalPath());
+        File jhoveBinDir = new File(thisMavenModuleDir, "../jhove/jhove-apps/target/appassembler/bin/");
+        String canonicalPath = jhoveBinDir.getCanonicalPath();
 
-        JHoveCommandPipe commandPipe = new JHoveCommandPipe(jhoveBinFile.getAbsolutePath());
+        if (jhoveBinDir.exists() == false) {
+            throw new FileNotFoundException(canonicalPath);
+        }
+        System.out.println(canonicalPath);
+
+        JHoveCommandPipe commandPipe = new JHoveCommandPipe(canonicalPath);
         try (
 
                 InputStream actual = commandPipe.apply(getClass().getResourceAsStream(BMA20150831_X11_0002_PDF));
