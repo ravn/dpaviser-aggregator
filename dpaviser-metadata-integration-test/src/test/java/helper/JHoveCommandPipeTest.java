@@ -14,18 +14,25 @@ import java.util.Map;
 
 import static dk.statsbiblioteket.dpaviser.metadatachecker.testdata.Resources.BMA20150831_X11_0002_PDF;
 import static dk.statsbiblioteket.dpaviser.metadatachecker.testdata.Resources.BMA20150831_X11_0002_XML;
+import static java.lang.String.join;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.stream.Collectors.toList;
 import static org.testng.Assert.assertEquals;
 
+@SuppressWarnings("PointlessBooleanExpression")
 public class JHoveCommandPipeTest {
+    /**
+     * This code compares the output cached in the project (and used in the unittests) to what jhove actually generates
+     * given the sample pdf.for the sample pdf as the cached version in the project. It expects to be run in a maven
+     * build (where property "user.dir" is undefined) "next to" a jhove source snapshot. Using this knowledge, ask JVM
+     * for where _this_ class is located in the filesystem and then navigate to the jhove build "next to" this project
+     * with an app-assembler structure in jhove-apps giving "jhove-apps/target/appassembler/bin/jhove" to call.  The
+     * appassembler patch has been submitted as a pull request in https://github.com/openpreserve/jhove/pull/47.
+     *
+     * @throws Exception
+     */
     @Test
     public void testIfJHoveOutputIsTheSameAsInTheTestdata() throws Exception {
-        // This code expects to be run in a maven build (where property "user.dir" is undefined).
-        // Using this knowledge, ask JVM for where _this_ class is
-        // located in the filesystem and then navigate to the jhove build "next to" this project with an app-assembler
-        // structure in jhove-apps giving "jhove-apps/target/appassembler/bin/jhove" to
-        // call.
 
         String targetClassesPath = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
         File thisMavenModuleDir = new File(targetClassesPath, "../..");
@@ -38,13 +45,12 @@ public class JHoveCommandPipeTest {
         System.out.println(canonicalPath); // FIXME: Remove when ready.
 
         Map<String, String> environmentVariables = new HashMap<>();
-        environmentVariables.put("TZ", "UTC");  // JHove output localized dates.
+        environmentVariables.put("TZ", "UTC");  // IMPORTANT: JHove output localized dates.
 
         JHoveCommandPipe commandPipe = new JHoveCommandPipe(canonicalPath, environmentVariables);
         try (
-
                 InputStream actual = commandPipe.apply(getClass().getResourceAsStream(BMA20150831_X11_0002_PDF));
-                InputStream expected = getClass().getResourceAsStream(BMA20150831_X11_0002_XML);
+                InputStream expected = getClass().getResourceAsStream(BMA20150831_X11_0002_XML)
         ) {
             List<String> actualList = StringListForInputStream(actual);
             actualList.remove(5); // <lastModified>2015-09-03T17:09:01+02:00</lastModified>
@@ -57,7 +63,7 @@ public class JHoveCommandPipeTest {
             expectedList.remove(3);
             expectedList.remove(2);
             expectedList.remove(1);
-            assertEquals(String.join("\n", expectedList), String.join("\n", actualList), "JHove output does not match cached version");
+            assertEquals(join("\n", expectedList), join("\n", actualList), "JHove output does not match cached version");
         }
     }
 
