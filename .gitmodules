@@ -20,3 +20,7 @@
 	path = jhove
 	url = https://github.com/statsbiblioteket/jhove.git
 	branch = integration
+[submodule "newspaper-batch-event-framework"]
+	path = newspaper-batch-event-framework
+	url = https://github.com/statsbiblioteket/newspaper-batch-event-framework.git
+	branch = dpaviser-statistics-refactoring

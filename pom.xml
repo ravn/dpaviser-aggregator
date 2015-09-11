@@ -40,6 +40,7 @@
         <module>dpaviser-structure-checker</module>
         <module>dpaviser-qa-tool</module>
         <module>dpaviser-metadata-integration-test</module>
+        <module>newspaper-batch-event-framework</module>
         <module>newspaper-parent</module>
         <module>sbforge-parent</module>
     </modules>
